@@ -1,18 +1,19 @@
-let nombre = prompt("¡Hola! Indicanos cuál es tu nombre")
-
-while (!nombre.trim()) {
-    nombre = prompt("¡Hola! Indicanos cuál es tu nombre") || ""
-    nombre = nombre.toLowerCase()
-}
 
 function saludar() {
-    alert("¡Hola " + nombre + "! ¡Bienvenido a esta nueva experiencia!")
-}
+    let nombre = prompt("¡Bienvenido!, Ingresa tu nombre")
+    
+    while (nombre === '' || /^[0-9]+$/.test(nombre) || nombre.trim() === '') {
+        alert("Hola, digita bien tu nombre")
+        nombre = prompt("¡Bienvenido!, Ingresa tu nombre")
+    }
 
-saludar();
+    alert("¡Hola " + nombre + "! Gracias por contactarte con nosotros")
+}
+saludar ()
 
 let diaDeNacimientoDelUsuario = parseInt(prompt("¿Qué día naciste?"))
-let mesDeNacimientoDelUsuario = parseInt(prompt("¿En qué mes naciste? (Indicanos el número del 1 al 12"))
+let mesDeNacimientoDelUsuario = parseInt(prompt("¿En qué mes naciste? (Indicanos el número del 1 al 12)"))
+
 
 const signosDelZodiaco = [
     { Signos: ["Cáncer", "Escorpio", "Piscis"], Elemento: "agua" },
@@ -140,6 +141,25 @@ if ((mesDeNacimientoDelUsuario === 2 && diaDeNacimientoDelUsuario >= 19) || (mes
 }
 
 
-const todosLosSignos = signosDelZodiaco.map(signo => signo.Signos).flat().join(", ")
+const signosDelZodiacoSinElementos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"]
+alert("Te mostramos para que veas todos los signos del zodiaco: " + signosDelZodiacoSinElementos)
 
-alert(`Por si no sabías, todos los signos del Zodíaco son: ${todosLosSignos}`)
+const nuevoSigno = "Ofiuco"
+
+const signosDelZodiacoSinElementosConOfiuco = [...signosDelZodiacoSinElementos, nuevoSigno]
+
+alert("Aunque en realidad dicen que son 13, ¿Te animas a encontrar el nuevo signo? Prestá atención. Los signos son: " + signosDelZodiacoSinElementosConOfiuco.join(', '))
+
+let respuestaDelUsuario;
+
+do {
+  respuestaDelUsuario = prompt("¿Te animas a adivinar cuál es el nuevo signo? ¿Cuál es?")
+} while (!respuestaDelUsuario || respuestaDelUsuario.toLowerCase() !== nuevoSigno.toLowerCase())
+
+alert("¡Correcto! " + nuevoSigno + " es el nuevo signo del zodiaco.")
+
+
+
+
+
+
